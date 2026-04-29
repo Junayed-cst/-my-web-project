@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>রক্তদাতা নিবন্ধন - রক্তসৈনিক বাংলাদেশ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="reg-style.css">
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white p-8 rounded-3xl shadow-xl w-full max-w-sm">
+        <div class="text-center mb-6">
+            <h2 class="text-2xl font-bold text-red-600">নিবন্ধন করুন</h2>
+            <p class="text-gray-500 text-sm">নতুন রক্তদাতা হিসেবে যুক্ত হোন</p>
+        </div>
+
+        <div class="space-y-4">
+            <input type="text" id="name" placeholder="আপনার নাম" 
+                class="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-red-500 outline-none transition">
+            
+            <input type="tel" id="phone" placeholder="ফোন নম্বর (01xxxxxxxxx)" 
+                class="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-red-500 outline-none transition">
+            
+            <input type="url" id="fb" placeholder="ফেসবুক প্রোফাইল লিংক" 
+                class="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-red-500 outline-none transition">
+
+            <select id="bloodGroup" 
+                class="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-red-500 outline-none transition bg-white">
+                <option value="">রক্তের গ্রুপ নির্বাচন করুন</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+            </select>
+
+            <button onclick="register()" 
+                class="w-full bg-red-600 hover:bg-red-700 text-white p-4 rounded-xl font-bold shadow-lg transform transition active:scale-95">
+                নিবন্ধন সম্পন্ন করুন
+            </button>
+            
+            <a href="index.html" class="block text-center text-gray-500 text-sm mt-4 hover:text-red-600 transition">হোম পেজে ফিরে যান</a>
+        </div>
+    </div>
+
+    <script src="reg-script.js"></script>
+</body>
+</html>

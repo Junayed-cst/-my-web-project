@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>রক্তসৈনিক বাংলাদেশ ফাউন্ডেশন</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-gray-100 pb-20">
+
+    <header class="bg-red-600 text-white p-6 text-center shadow-lg">
+        <h1 class="text-2xl font-bold">রক্তসৈনিক বাংলাদেশ ফাউন্ডেশন</h1>
+        <p>( নকলা , উপজেলা শাখা )</p>
+    </header>
+
+    <div class="max-w-md mx-auto px-4 mt-6">
+        <div class="bg-red-100 p-2 rounded-t-xl border-x border-t border-red-200 overflow-hidden">
+            <marquee behavior="scroll" direction="left" class="text-red-700 font-bold text-sm">
+                রক্তের প্রয়োজনে সঠিক গ্রুপের রক্তদাতার খোঁজ করুন এখান থেকে। রক্তদান করুন, জীবন বাঁচান।
+            </marquee>
+        </div>
+
+        <div class="bg-white p-4 rounded-b-2xl shadow-md border-b-4 border-l-4 border-r-4 border-red-500">
+            <div class="flex gap-2">
+                <select id="searchBloodGroup" class="w-full h-12 p-2 border-2 border-gray-200 rounded-xl bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-500 text-gray-700">
+                    <option value="">রক্তের গ্রুপ নির্বাচন করুন</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                </select>
+                
+                <button onclick="searchDonor()" class="w-16 h-12 bg-red-600 text-white rounded-xl hover:bg-red-700 transition flex items-center justify-center">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <section class="max-w-md mx-auto p-4 grid grid-cols-2 gap-4">
+        <a href="registation.html" class="bg-white p-4 rounded-xl shadow text-red-600 font-bold border border-red-200 text-center">নিবন্ধন করুন</a>
+        <a href="user.html" class="bg-red-600 p-4 rounded-xl shadow text-white font-bold text-center">লগইন</a>
+    </section>
+
+    <div class="bg-white p-6 rounded-2xl shadow-md text-center mb-6 max-w-md mx-auto">
+        <img src="image/junayed.jpg" class="w-20 h-20 rounded-full mx-auto border-4 border-red-100 mb-3" alt="Ahammed Junayed">
+        <h2 class="font-bold text-lg">Ahammed Junayed</h2>
+        <p class="text-sm text-gray-500">Developer <br> Department of computer science & technology</p>
+    </div>
+
+    <section class="max-w-md mx-auto p-4">
+        <h2 class="font-bold text-gray-700 mb-3">সংগঠনের দায়িত্বশীলবৃন্দ</h2>
+        <div class="bg-white p-4 rounded-2xl shadow-sm flex items-center gap-4 mb-3">
+            <img src="image/sabbir.jpg" class="w-14 h-14 rounded-full object-cover" alt="Sabbir">
+            <div>
+                <h3 class="font-bold">Imam Hasan Sabbir</h3>
+                <a href="tel:01401911943" class="text-red-600 text-sm font-bold"><i class="fa-solid fa-phone"></i> কল করুন</a>
+                <p class="text-xs text-gray-500"><span class="text-red-600">01401911943</span></p>
+            </div>
+        </div>
+        <div class="bg-white p-4 rounded-2xl shadow-sm flex items-center gap-4">
+            <img src="image/alamin.jpg" class="w-14 h-14 rounded-full object-cover" alt="Alamin">
+            <div>
+                <h3 class="font-bold">Abdullah Alamin</h3>
+                <p class="text-xs text-gray-500"><span class="text-red-600">01710088032</span></p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="max-w-md mx-auto px-4 py-6 text-center mb-16">
+        <div class="border-t border-gray-200 pt-4">
+            <p class="text-[11px] italic text-gray-600">
+                "এই ক্ষুদ্র প্রচেষ্টাটি মহান সৃষ্টিকর্তার সন্তুষ্টির উদ্দেশ্যে উৎসর্গকৃত। হে আল্লাহ, এই নেক কাজের উসিলায় আপনি আমাকে ক্ষমা করুন।"
+            </p>
+        </div>
+    </footer>
+
+    <nav class="fixed bottom-0 w-full bg-white border-t p-3 flex justify-around shadow-2xl">
+        <a href="admin.html" class="text-red-600 flex flex-col items-center"><i class="fa fa-home"></i><span class="text-[10px]">হোম</span></a>
+        <a href="#" class="text-gray-500 flex flex-col items-center"><i class="fa fa-list"></i><span class="text-[10px]">তালিকা</span></a>
+        <a href="admin.html" class="text-gray-500 flex flex-col items-center"><i class="fa fa-user"></i><span class="text-[10px]">প্রোফাইল</span></a>
+        <a href="#" class="text-gray-500 flex flex-col items-center"><i class="fa fa-gear"></i><span class="text-[10px]">সেটিং</span></a>
+    </nav>
+
+    <!-- for save -->
+     <!-- <div class="registration-form" style="padding: 20px; max-width: 400px;">
+    <h2>ডোনার রেজিস্ট্রেশন</h2>
+    <input type="text" id="donorName" placeholder="নাম" style="width: 100%; margin-bottom: 10px; padding: 8px;">
+    <input type="text" id="bloodGroup" placeholder="রক্তের গ্রুপ (যেমন: A+)" style="width: 100%; margin-bottom: 10px; padding: 8px;">
+    <input type="text" id="phoneNumber" placeholder="ফোন নম্বর" style="width: 100%; margin-bottom: 10px; padding: 8px;">
+    <button onclick="registerDonor()" style="padding: 10px 20px; background: #d9534f; color: white; border: none; cursor: pointer;">রেজিস্ট্রেশন করুন</button>
+</div> -->
+
+    <script src="index.js"></script>
+
+    <!-- fairbase -->
+    <script type="module">
+  // ১. প্রয়োজনীয় সব ফাংশন একসাথে ইম্পোর্ট করা
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-analytics.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
+
+  // ২. আপনার সঠিক Firebase Configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyA5HbnM JZuKBRY9joJ6wMSZKt3tr68X4M8",
+    authDomain: "blood-sainik-nakla-unit.firebaseapp.com",
+    projectId: "blood-sainik-nakla-unit",
+    storageBucket: "blood-sainik-nakla-unit.firebasestorage.app",
+    messagingSenderId: "82503691429",
+    appId: "1:82503691429:web:24f15bed81e552f898714c",
+    measurementId: "G-1ZSJRGN9Y7"
+  };
+
+  // ৩. Firebase এবং Firestore ইনিশিয়ালাইজ করা
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const db = getFirestore(app);
+
+  console.log("Firebase Connected Successfully!");
+
+  // ৪. ডাটা পাঠানোর একটি স্যাম্পল ফাংশন (টেস্ট করার জন্য)
+  window.saveData = async function() {
+    try {
+      const docRef = await addDoc(collection(db, "donors"), {
+        name: "Test Donor",
+        group: "B+",
+        date: new Date()
+      });
+      alert("ডাটা সফলভাবে সেভ হয়েছে! ID: " + docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+      alert("ভুল হয়েছে: " + e.message);
+    }
+  }
+</script>
+
+<!-- data base -->
+ 
+</body>
+</html>
