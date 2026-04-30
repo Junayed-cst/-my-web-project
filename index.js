@@ -169,3 +169,26 @@ window.registerDonor = async function() {
         alert("ডাটা সেভ করতে সমস্যা হয়েছে!");
     }
 }
+// fairbase connect
+
+// index.js
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+window.registerDonor = async function() {
+    const name = document.getElementById("name").value; // আপনার ইনপুটের আইডি দেখে নেবেন
+    const bloodGroup = document.getElementById("bloodGroup").value;
+    const phone = document.getElementById("phoneNumber").value;
+
+    try {
+        const docRef = await addDoc(collection(window.db, "users"), {
+            name: name,
+            blood_group: bloodGroup,
+            phone_number: phone,
+            location: "Home"
+        });
+        alert("সফলভাবে রেজিস্ট্রেশন হয়েছে! ID: " + docRef.id);
+    } catch (e) {
+        console.error("Error adding document: ", e);
+        alert("এরর হয়েছে, কনসোল চেক করুন।");
+    }
+}
