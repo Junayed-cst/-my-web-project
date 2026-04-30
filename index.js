@@ -1,22 +1,17 @@
-// ১. শুরুতে ইমপোর্ট
+// ১. শুরুতে ইমপোর্ট (একবার মাত্র)
 import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // ২. রক্তদাতা রেজিস্ট্রেশন ফাংশন
-import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
 window.registerDonor = async function() {
-    console.log("Button clicked!"); // চেক করার জন্য
+    console.log("Button clicked!");
     
-    // সব আইডি এখানে কনসোল লগ করুন, দেখুন কোনটা null আসে
-    const name = document.getElementById("name")?.value;
-    const phone = document.getElementById("phone")?.value;
-    const fb = document.getElementById("fb")?.value;
+    const name = document.getElementById("name")?.value.trim();
+    const phone = document.getElementById("phone")?.value.trim();
+    const fb = document.getElementById("fb")?.value.trim();
     const bloodGroup = document.getElementById("bloodGroup")?.value;
 
-    console.log("Data:", { name, phone, fb, bloodGroup });
-
     if (!name || !phone || !bloodGroup) {
-        alert("এরর: ইনপুট ফিল্ড খালি আছে!");
+        alert("এরর: নাম, ফোন এবং রক্তের গ্রুপ খালি আছে!");
         return;
     }
 
@@ -33,12 +28,8 @@ window.registerDonor = async function() {
             blood_group: bloodGroup,
             location: "Home"
         });
+        
         alert("সফলভাবে রেজিস্ট্রেশন হয়েছে! ID: " + docRef.id);
-    } catch (e) {
-        console.error("Firebase Error: ", e);
-        alert("এরর: " + e.message);
-    }
-}
         
         // ফর্ম ক্লিয়ার করা
         document.getElementById("name").value = "";
@@ -46,8 +37,8 @@ window.registerDonor = async function() {
         document.getElementById("fb").value = "";
         document.getElementById("bloodGroup").value = "";
     } catch (e) {
-        console.error("Error adding document: ", e);
-        alert("এরর হয়েছে! কনসোল চেক করুন।");
+        console.error("Firebase Error: ", e);
+        alert("এরর: " + e.message);
     }
 }
 
@@ -61,7 +52,7 @@ window.searchDonor = function() {
     }
 }
 
-// ৪. লগইন ফর্ম হ্যান্ডলার (Admin & User)
+// ৪. লগইন ফর্ম হ্যান্ডলার
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
     loginForm.addEventListener('submit', function(e) {
