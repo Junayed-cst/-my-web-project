@@ -89,76 +89,35 @@
         <a href="#" class="text-gray-500 flex flex-col items-center"><i class="fa fa-gear"></i><span class="text-[10px]">সেটিং</span></a>
     </nav>
 
-    <!-- for save -->
-     <!-- <div class="registration-form" style="padding: 20px; max-width: 400px;">
-    <h2>ডোনার রেজিস্ট্রেশন</h2>
-    <input type="text" id="donorName" placeholder="নাম" style="width: 100%; margin-bottom: 10px; padding: 8px;">
-    <input type="text" id="bloodGroup" placeholder="রক্তের গ্রুপ (যেমন: A+)" style="width: 100%; margin-bottom: 10px; padding: 8px;">
-    <input type="text" id="phoneNumber" placeholder="ফোন নম্বর" style="width: 100%; margin-bottom: 10px; padding: 8px;">
-    <button onclick="registerDonor()" style="padding: 10px 20px; background: #d9534f; color: white; border: none; cursor: pointer;">রেজিস্ট্রেশন করুন</button>
-</div> -->
+    <script type="module">
+        // ১. Firebase মডিউল ইমপোর্ট করা
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-    <!-- <script src="index.js"></script> -->
+        // ২. আপনার সঠিক Firebase কনফিগারেশন
+        const firebaseConfig = {
+            apiKey: "AIzaSyA5HbnMJZuKBRY9joJ6wMSZKt3tr68X4M8",
+            authDomain: "blood-sainik-nakla-unit.firebaseapp.com",
+            projectId: "blood-sainik-nakla-unit",
+            storageBucket: "blood-sainik-nakla-unit.firebasestorage.app",
+            messagingSenderId: "82503691429",
+            appId: "1:82503691429:web:166f77f5ea59046f98714c"
+        };
+
+        // ৩. Firebase ইনিশিয়ালাইজ করা
+        try {
+            const app = initializeApp(firebaseConfig);
+            window.db = getFirestore(app); // গ্লোবাল উইন্ডোতে সেট করা
+            console.log("🔥 Firebase Database Connected Successfully!");
+        } catch (error) {
+            console.error("❌ Firebase Initialization Error:", error);
+        }
+    </script>
+
+    <!-- ৪. সবশেষে index.js লোড করুন (অবশ্যই আগের স্ক্রিপ্টের নিচে) -->
     <script type="module" src="index.js"></script>
 
-    <!-- fairbase -->
-  <script type="module">
-  // Firebase SDK ইমপোর্ট (Analytics এর পাশাপাশি Firestore যোগ করা হয়েছে)
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
 
-  // আপনার Firebase কনফিগারেশন
-  const firebaseConfig = {
-    apiKey: "AIzaSyA5HbnMJZuKBRY9joJ6wMSZKt3tr68X4M8",
-    authDomain: "blood-sainik-nakla-unit.firebaseapp.com",
-    projectId: "blood-sainik-nakla-unit",
-    storageBucket: "blood-sainik-nakla-unit.firebasestorage.app",
-    messagingSenderId: "82503691429",
-    appId: "1:82503691429:web:166f77f5ea59046f98714c",
-    measurementId: "G-LTJW714510"
-  };
-
-  // Firebase ইনিশিয়ালাইজ করা
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  
-  // Firestore কে উইন্ডোতে সেট করা যেন index.js থেকে অ্যাক্সেস করা যায়
-  window.db = getFirestore(app); 
-</script>
-<!-- data base -->
-
-    <!-- <!-- Firebase ইনিশিয়ালাইজেশন ব্লক শেষে এটি দিন -->
-<!-- <script type="module"> -->
-  <!-- // ... (Firebase initialization code) ...
-  window.db = getFirestore(app);  -->
-<!-- </script> --> 
-
-<!-- এখন index.js লোড করুন -->
-<script type="module" src="index.js"></script>
-
-    <!-- Firebase SDK এবং Initialization -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyA5HbnMJZuKBRY9joJ6wMSZKt3tr68X4M8",
-    authDomain: "blood-sainik-nakla-unit.firebaseapp.com",
-    projectId: "blood-sainik-nakla-unit",
-    storageBucket: "blood-sainik-nakla-unit.firebasestorage.app",
-    messagingSenderId: "82503691429",
-    appId: "1:82503691429:web:166f77f5ea59046f98714c"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  // এই লাইনটিই সবচেয়ে গুরুত্বপূর্ণ
-  window.db = getFirestore(app);
-  console.log("Firestore Initialized:", window.db);
-</script>
-
-<!-- index.js লোড করার সময় type="module" বাদ দিয়ে সাধারণ স্ক্রিপ্ট হিসেবে ট্রাই করুন যদি সমস্যা থাকে -->
-<script src="index.js"></script>
  
 </body>
 </html>
