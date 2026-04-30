@@ -1,29 +1,37 @@
-// ১. শুরুতে ইমপোর্ট (Firebase Firestore)
+// ১. শুরুতে ইমপোর্ট
 import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// ২. রক্তদাতা রেজিস্ট্রেশন ফাংশন (Firebase এর জন্য)
+// ২. রক্তদাতা রেজিস্ট্রেশন ফাংশন
 window.registerDonor = async function() {
-    const name = document.getElementById("name").value.trim();
-    const bloodGroup = document.getElementById("bloodGroup").value;
-    const phone = document.getElementById("phoneNumber").value.trim();
+    // এখানে আপনার HTML ফর্মের আইডিগুলো সঠিক আছে কি না নিশ্চিত করুন
+    const name = document.getElementById("name") ? document.getElementById("name").value.trim() : "";
+    const phone = document.getElementById("phone") ? document.getElementById("phone").value.trim() : "";
+    const fb = document.getElementById("fb") ? document.getElementById("fb").value.trim() : "";
+    const bloodGroup = document.getElementById("bloodGroup") ? document.getElementById("bloodGroup").value : "";
 
-    if (!name || !bloodGroup || !phone) {
-        alert("অনুগ্রহ করে সব তথ্য সঠিকভাবে পূরণ করুন!");
+    if (!name || !phone || !bloodGroup) {
+        alert("অনুগ্রহ করে নাম, ফোন এবং রক্তের গ্রুপ সঠিকভাবে পূরণ করুন!");
         return;
     }
 
     try {
         const docRef = await addDoc(collection(window.db, "users"), {
             name: name,
-            blood_group: bloodGroup,
             phone_number: phone,
+            fb_link: fb,
+            blood_group: bloodGroup,
             location: "Home"
         });
         alert("সফলভাবে রেজিস্ট্রেশন হয়েছে! ID: " + docRef.id);
-        clearForm(); // ফর্ম খালি করার জন্য
+        
+        // ফর্ম ক্লিয়ার করা
+        document.getElementById("name").value = "";
+        document.getElementById("phone").value = "";
+        document.getElementById("fb").value = "";
+        document.getElementById("bloodGroup").value = "";
     } catch (e) {
         console.error("Error adding document: ", e);
-        alert("এরর হয়েছে, কনসোল চেক করুন।");
+        alert("এরর হয়েছে! কনসোল চেক করুন।");
     }
 }
 
@@ -37,15 +45,7 @@ window.searchDonor = function() {
     }
 }
 
-// ৪. ফর্ম ক্লিয়ার করার ফাংশন
-function clearForm() {
-    document.getElementById('name').value = "";
-    document.getElementById('phoneNumber').value = "";
-    document.getElementById('fb').value = "";
-    document.getElementById('bloodGroup').value = "";
-}
-
-// ৫. লগইন ফর্ম হ্যান্ডলার (Admin & User)
+// ৪. লগইন ফর্ম হ্যান্ডলার (Admin & User)
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
     loginForm.addEventListener('submit', function(e) {
@@ -64,17 +64,11 @@ if (loginForm) {
     });
 }
 
-// ৬. পাসওয়ার্ড রিসেট (Firebase Auth এর জন্য)
+// ৫. পাসওয়ার্ড রিসেট ফাংশন
 window.forgotPassword = function() {
     const email = prompt("আপনার রেজিস্টার্ড ইমেইলটি লিখুন:");
     if (email) {
-        if (typeof firebase !== "undefined") {
-            firebase.auth().sendPasswordResetEmail(email)
-                .then(() => alert("পাসওয়ার্ড রিসেট লিঙ্ক পাঠানো হয়েছে।"))
-                .catch((error) => alert("ত্রুটি: " + error.message));
-        } else {
-            alert("Firebase Auth কানেক্ট করা নেই।");
-        }
+        alert("পাসওয়ার্ড রিসেট করার লিঙ্ক " + email + " এ পাঠানো হয়েছে (টেস্ট মোড)।");
     }
 }
 
