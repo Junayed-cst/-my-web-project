@@ -136,6 +136,29 @@
 
 <!-- এখন index.js লোড করুন -->
 <script type="module" src="index.js"></script>
+
+    <!-- Firebase SDK এবং Initialization -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyA5HbnMJZuKBRY9joJ6wMSZKt3tr68X4M8",
+    authDomain: "blood-sainik-nakla-unit.firebaseapp.com",
+    projectId: "blood-sainik-nakla-unit",
+    storageBucket: "blood-sainik-nakla-unit.firebasestorage.app",
+    messagingSenderId: "82503691429",
+    appId: "1:82503691429:web:166f77f5ea59046f98714c"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  // এই লাইনটিই সবচেয়ে গুরুত্বপূর্ণ
+  window.db = getFirestore(app);
+  console.log("Firestore Initialized:", window.db);
+</script>
+
+<!-- index.js লোড করার সময় type="module" বাদ দিয়ে সাধারণ স্ক্রিপ্ট হিসেবে ট্রাই করুন যদি সমস্যা থাকে -->
+<script src="index.js"></script>
  
 </body>
 </html>
