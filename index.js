@@ -1,3 +1,44 @@
+
+
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
+
+// ডাটাবেজ কানেক্ট করা
+const db = getFirestore();
+
+// ফর্ম সাবমিট হ্যান্ডলার
+const registrationForm = document.getElementById("registrationForm");
+
+if (registrationForm) {
+    registrationForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // ইনপুট ফিল্ড থেকে তথ্য নেওয়া
+        const name = document.getElementById("userName").value;
+        const phone = document.getElementById("userPhone").value;
+        const fb = document.getElementById("userFb").value;
+        const blood = document.getElementById("userBlood").value;
+
+        try {
+            // "users" কালেকশনে ডেটা পাঠানো
+            await addDoc(collection(db, "users"), {
+                name: name,
+                phone: phone,
+                fb_link: fb,
+                blood_group: blood,
+                timestamp: new Date()
+            });
+            
+            alert("সফলভাবে নিবন্ধন সম্পন্ন হয়েছে!");
+            registrationForm.reset();
+        } catch (error) {
+            console.error("Error: ", error);
+            alert("ডেটা সেভ করা যায়নি।");
+        }
+    });
+}
+
+
+
 // ১. শুরুতে ইমপোর্ট (একবার মাত্র)
 import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
