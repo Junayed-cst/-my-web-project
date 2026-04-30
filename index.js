@@ -2,19 +2,30 @@
 import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // ২. রক্তদাতা রেজিস্ট্রেশন ফাংশন
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
 window.registerDonor = async function() {
-    // এখানে আপনার HTML ফর্মের আইডিগুলো সঠিক আছে কি না নিশ্চিত করুন
-    const name = document.getElementById("name") ? document.getElementById("name").value.trim() : "";
-    const phone = document.getElementById("phone") ? document.getElementById("phone").value.trim() : "";
-    const fb = document.getElementById("fb") ? document.getElementById("fb").value.trim() : "";
-    const bloodGroup = document.getElementById("bloodGroup") ? document.getElementById("bloodGroup").value : "";
+    console.log("Button clicked!"); // চেক করার জন্য
+    
+    // সব আইডি এখানে কনসোল লগ করুন, দেখুন কোনটা null আসে
+    const name = document.getElementById("name")?.value;
+    const phone = document.getElementById("phone")?.value;
+    const fb = document.getElementById("fb")?.value;
+    const bloodGroup = document.getElementById("bloodGroup")?.value;
+
+    console.log("Data:", { name, phone, fb, bloodGroup });
 
     if (!name || !phone || !bloodGroup) {
-        alert("অনুগ্রহ করে নাম, ফোন এবং রক্তের গ্রুপ সঠিকভাবে পূরণ করুন!");
+        alert("এরর: ইনপুট ফিল্ড খালি আছে!");
         return;
     }
 
     try {
+        if (!window.db) {
+            alert("এরর: ডেটাবেস কানেকশন পাওয়া যায়নি!");
+            return;
+        }
+
         const docRef = await addDoc(collection(window.db, "users"), {
             name: name,
             phone_number: phone,
@@ -23,6 +34,11 @@ window.registerDonor = async function() {
             location: "Home"
         });
         alert("সফলভাবে রেজিস্ট্রেশন হয়েছে! ID: " + docRef.id);
+    } catch (e) {
+        console.error("Firebase Error: ", e);
+        alert("এরর: " + e.message);
+    }
+}
         
         // ফর্ম ক্লিয়ার করা
         document.getElementById("name").value = "";
