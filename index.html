@@ -101,46 +101,30 @@
     <script src="index.js"></script>
 
     <!-- fairbase -->
-    <script type="module">
-  // ১. প্রয়োজনীয় সব ফাংশন একসাথে ইম্পোর্ট করা
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-analytics.js";
-  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
+  <script type="module">
+  // Firebase SDK ইমপোর্ট (Analytics এর পাশাপাশি Firestore যোগ করা হয়েছে)
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
 
-  // ২. আপনার সঠিক Firebase Configuration
+  // আপনার Firebase কনফিগারেশন
   const firebaseConfig = {
-    apiKey: "AIzaSyA5HbnM JZuKBRY9joJ6wMSZKt3tr68X4M8",
+    apiKey: "AIzaSyA5HbnMJZuKBRY9joJ6wMSZKt3tr68X4M8",
     authDomain: "blood-sainik-nakla-unit.firebaseapp.com",
     projectId: "blood-sainik-nakla-unit",
     storageBucket: "blood-sainik-nakla-unit.firebasestorage.app",
     messagingSenderId: "82503691429",
-    appId: "1:82503691429:web:24f15bed81e552f898714c",
-    measurementId: "G-1ZSJRGN9Y7"
+    appId: "1:82503691429:web:166f77f5ea59046f98714c",
+    measurementId: "G-LTJW714510"
   };
 
-  // ৩. Firebase এবং Firestore ইনিশিয়ালাইজ করা
+  // Firebase ইনিশিয়ালাইজ করা
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
-  const db = getFirestore(app);
-
-  console.log("Firebase Connected Successfully!");
-
-  // ৪. ডাটা পাঠানোর একটি স্যাম্পল ফাংশন (টেস্ট করার জন্য)
-  window.saveData = async function() {
-    try {
-      const docRef = await addDoc(collection(db, "donors"), {
-        name: "Test Donor",
-        group: "B+",
-        date: new Date()
-      });
-      alert("ডাটা সফলভাবে সেভ হয়েছে! ID: " + docRef.id);
-    } catch (e) {
-      console.error("Error adding document: ", e);
-      alert("ভুল হয়েছে: " + e.message);
-    }
-  }
+  
+  // Firestore কে উইন্ডোতে সেট করা যেন index.js থেকে অ্যাক্সেস করা যায়
+  window.db = getFirestore(app); 
 </script>
-
 <!-- data base -->
  
 </body>
